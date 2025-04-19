@@ -2,11 +2,11 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <div className="navbar bg-base-300 shadow-sm">
+    <div className="navbar bg-base-300 shadow-sm h-[50px]">
       <div className="flex-1">
         <a className="btn btn-ghost text-xl">
-          <span className="w-10 h-6">
-            <img className="rounded-b-md" src="/public/Logo.jpg" alt="" />
+          <span className="w-8 h-7">
+            <img className="rounded-b-md" src="/public/Logo.png" alt="Logo" />
           </span>
           DevTinder
         </a>
