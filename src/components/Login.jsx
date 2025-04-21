@@ -10,7 +10,7 @@ const Login = () => {
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault(); // Prevents page reload on form submission
@@ -24,7 +24,7 @@ const Login = () => {
         { withCredentials: true }
       );
       dispatch(addUser(res.data));
-      Navigate("/");
+      navigate("/");
       toast.success("Login successful! 🚀");
     } catch (err) {
       toast.error("Login failed. Please check your credentials.");
