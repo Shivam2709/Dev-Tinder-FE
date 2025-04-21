@@ -1,7 +1,43 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { BASE_URL } from "../utils/Constant";
+import { addFeed } from "../utils/feedSlice";
+import toast from "react-hot-toast";
+import UserCard from "./UserCard";
 
 const Feed = () => {
-  return <div>Feed</div>;
+  const feed = useSelector((store) => store.feed);
+  const dispatch = useDispatch();
+
+  const getFeed = async () => {
+    if (feed) return;
+    try {
+      const res = await axios.get(BASE_URL + "/feed", {
+        withCredentials: true,
+      });
+      dispatch(addFeed(res?.data?.data));
+      toast.success("Get All feed..!");
+    } catch (err) {
+      toast.error("Something went wrong..!", err.message);
+    }
+  };
+
+  useEffect(() => {
+    getFeed();
+  }, []);
+
+  if (!feed) return;
+
+  if (feed.length <= 0)
+    return <h1 className="flex justify-center my-10">No new users found!</h1>;
+  return (
+    feed && (
+      <div className="flex justify-center my-10 mt-2">
+        <UserCard user={feed[0]} />
+      </div>
+    )
+  );
 };
 
 export default Feed;

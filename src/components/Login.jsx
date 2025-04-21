@@ -49,30 +49,30 @@ const Login = () => {
             <label className="floating-label block mb-4">
               <span>Email</span>
               <input
-                type="text"
-                placeholder="mail@site.com"
+                type="email"
+                placeholder="Enter your Email"
                 className="input input-md w-full"
                 value={emailId}
                 onChange={(e) => setEmailId(e.target.value)}
               />
             </label>
 
-            <label className="floating-label block mb-4">
+            <label className="floating-label block mb-2">
               <span>Password</span>
               <input
                 type="password"
-                placeholder="password"
+                placeholder="Enter your Email"
                 className="input input-md w-full"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
-            <p className="text-red-500 text-sm">{error}</p>
+            <p className="text-red-500 text-xs">{error}</p>
             <button
               type="submit"
-              className="btn btn-primary w-80 rounded-3xl mt-2"
+              className="btn btn-primary w-80 rounded-3xl mt-4"
             >
-              Sign Up
+              Sign In
             </button>
           </form>
 
