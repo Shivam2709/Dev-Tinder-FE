@@ -9,6 +9,7 @@ import { BASE_URL } from "../utils/Constant";
 const Login = () => {
   const [emailId, setEmailId] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,10 +26,10 @@ const Login = () => {
       );
       dispatch(addUser(res.data));
       navigate("/");
-      toast.success("Login successful! 🚀");
+      toast.success("Login successfully..! 🚀");
     } catch (err) {
       toast.error("Login failed. Please check your credentials.");
-      console.log("ERROR " + err.message);
+      setError(err?.response?.data || "Something went wrong");
     }
   };
 
@@ -66,8 +67,11 @@ const Login = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
-
-            <button type="submit" className="btn btn-primary w-80 rounded-3xl">
+            <p className="text-red-500 text-sm">{error}</p>
+            <button
+              type="submit"
+              className="btn btn-primary w-80 rounded-3xl mt-2"
+            >
               Sign Up
             </button>
           </form>

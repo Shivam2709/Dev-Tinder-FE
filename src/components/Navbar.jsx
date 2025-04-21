@@ -1,9 +1,29 @@
+import axios from "axios";
 import React from "react";
-import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/Constant";
+import { removeUser } from "../utils/userSlice";
+import toast from "react-hot-toast";
+import { IoIosLogOut } from "react-icons/io";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+
+  const handleLogout = async () => {
+    try {
+      await axios.post(BASE_URL + "/logout", {}, { withCredentials: true });
+      dispatch(removeUser());
+      navigate("/login");
+      toast.success("Logout successfully..!");
+    } catch (err) {
+      toast.error("Login failed. Please check your credentials.");
+      console.log(err);
+    }
+  };
+
   return (
     <div className="navbar bg-base-300 shadow-sm h-[50px]">
       <div className="flex-1">
@@ -34,14 +54,18 @@ const Navbar = () => {
               <li>
                 <Link to="/profile" className="justify-between">
                   Profile
-                  <span className="badge"></span>
                 </Link>
               </li>
               <li>
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                <a onClick={handleLogout}>
+                  Logout
+                  <span className="ml-25">
+                    <IoIosLogOut size={24} />
+                  </span>
+                </a>
               </li>
             </ul>
           </div>
