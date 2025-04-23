@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-300 shadow-sm h-[50px]">
+    <div className="navbar fixed top-0 left-0 w-full z-50 bg-base-300 shadow-sm h-[50px]">
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">
           <span className="w-8 h-7">
