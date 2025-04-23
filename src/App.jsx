@@ -6,6 +6,9 @@ import { Provider } from "react-redux";
 import store from "./utils/reduxStore";
 import Feed from "./components/Feed";
 import { Toaster } from "react-hot-toast";
+import AllConnection from "./components/AllConnection";
+import ConnectionRequest from "./components/ConnectionRequest";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
@@ -18,6 +21,9 @@ function App() {
               <Route path="/" element={<Feed />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
+              <Route path="/connections" element={<AllConnection />} />
+              <Route path="/requests" element={<ConnectionRequest />} />
+              <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
         </BrowserRouter>

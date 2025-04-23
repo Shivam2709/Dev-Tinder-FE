@@ -1,10 +1,9 @@
 import axios from "axios";
-import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../utils/Constant";
 import { addFeed } from "../utils/feedSlice";
 import toast from "react-hot-toast";
-import UserCard from "./UserCard";
+import { useEffect } from "react";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
@@ -17,9 +16,10 @@ const Feed = () => {
         withCredentials: true,
       });
       dispatch(addFeed(res?.data?.data));
-      toast.success("Get All feed..!");
+      toast.success("Got all feeds!");
     } catch (err) {
-      toast.error("Something went wrong..!", err.message);
+      toast.error("Something went wrong..!");
+      console.error(err);
     }
   };
 
@@ -27,16 +27,21 @@ const Feed = () => {
     getFeed();
   }, []);
 
-  if (!feed) return;
+  // Loading state
+  if (feed === null || feed === undefined) {
+    return <h1 className="flex justify-center my-10">Loading feed...</h1>;
+  }
 
-  if (feed.length <= 0)
+  // Empty feed state
+  if (Array.isArray(feed) && feed.length === 0) {
     return <h1 className="flex justify-center my-10">No new users found!</h1>;
+  }
+
+  // Feed loaded
   return (
-    feed && (
-      <div className="flex justify-center my-10 mt-2">
-        <UserCard user={feed[0]} />
-      </div>
-    )
+    <div className="flex justify-center my-10 mt-2">
+      <UserCard user={feed[0]} />
+    </div>
   );
 };
 
