@@ -4,6 +4,7 @@ import { BASE_URL } from "../utils/Constant";
 import { addFeed } from "../utils/feedSlice";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
+import UserCard from "./UserCard";
 
 const Feed = () => {
   const feed = useSelector((store) => store.feed);
