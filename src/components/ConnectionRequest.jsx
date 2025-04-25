@@ -33,13 +33,14 @@ const ConnectionRequest = () => {
   }
   return (
     <div className="text-center my-10">
-      <h1 className="text-bold text-white text-3xl">All Requests</h1>
+      <h1 className="text-bold text-white text-3xl">Connection Requests</h1>
       <div className="flex flex-wrap justify-center gap-6 mt-5">
-        {requests.map((connection) => {
-          const { firstName, lastName, profilePic, about } = connection;
+        {requests.map((request) => {
+          const { _id, firstName, lastName, profilePic, about } =
+            request.fromUserId;
 
           return (
-            <div className="w-100 h-100">
+            <div key={_id} className="w-100 h-100">
               <div className="flex card bg-base-300 w-96 shadow-sm">
                 <figure className="px-10 pt-10">
                   <img src={profilePic} alt="Shoes" className="rounded-xl" />
@@ -47,6 +48,10 @@ const ConnectionRequest = () => {
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">{firstName + " " + lastName}</h2>
                   <p>{about}</p>
+                </div>
+                <div className="flex justify-center gap-10 m-2">
+                  <button className="btn btn-soft btn-error">Reject</button>
+                  <button className="btn btn-soft btn-primary">Accept</button>
                 </div>
               </div>
             </div>

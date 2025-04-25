@@ -38,10 +38,10 @@ const AllConnection = () => {
       <h1 className="text-bold text-white text-3xl">Connections</h1>
       <div className="flex flex-wrap justify-center gap-6 mt-5">
         {connections.map((connection) => {
-          const { firstName, lastName, profilePic, about } = connection;
+          const { _id, firstName, lastName, profilePic, about } = connection;
 
           return (
-            <div className="w-100 h-100">
+            <div key={_id} className="w-100 h-100">
               <div className="flex card bg-base-300 w-96 shadow-sm">
                 <figure className="px-10 pt-10">
                   <img src={profilePic} alt="Shoes" className="rounded-xl" />
