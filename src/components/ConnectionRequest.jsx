@@ -4,7 +4,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequests, removeRequest } from "../utils/requestSlice";
 import toast from "react-hot-toast";
-
+import { motion } from "framer-motion";
 const ConnectionRequest = () => {
   const requests = useSelector((store) => store.requests);
   const dispatch = useDispatch();

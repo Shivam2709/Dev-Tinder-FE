@@ -13,9 +13,16 @@ const EditProfile = ({ user }) => {
   const [age, setAge] = useState(user.age || "");
   const [gender, setGender] = useState(user.gender || "");
   const [about, setAbout] = useState(user.about || "");
-  const [skills, setSkills] = useState(user.skills);
+  const [skills, setSkills] = useState(user.skills || []);
   const [error, setError] = useState("");
   const dispatch = useDispatch();
+  const MAX_ABOUT_LENGTH = 200;
+
+  const handleAboutChange = (e) => {
+    if (e.target.value.length <= MAX_ABOUT_LENGTH) {
+      setAbout(e.target.value);
+    }
+  };
 
   const saveProfile = async () => {
     setError("");
@@ -34,7 +41,6 @@ const EditProfile = ({ user }) => {
         { withCredentials: true }
       );
       dispatch(addUser(res?.data?.data));
-
       toast.success("Profile Updated Succesfully!");
     } catch (err) {
       toast.error("Somthing went Wrong!", err.message);
@@ -144,6 +150,7 @@ const EditProfile = ({ user }) => {
                   </div>
                 </div>
 
+                {/* Skills */}
                 <label className="form-control w-full max-w-xs my-2">
                   <div className="label">
                     <span className="label-text">Skills:</span>
@@ -151,23 +158,34 @@ const EditProfile = ({ user }) => {
                   <input
                     type="text"
                     value={skills.join(",")}
-                    placeholder="Enter with , separated."
+                    placeholder="Enter skills separated by commas"
                     className="input input-bordered w-full max-w-xs"
                     onChange={(e) =>
-                      setSkills(e.target.value.split(",").map((s) => s.trim()))
+                      setSkills(
+                        e.target.value
+                          .split(",")
+                          .map((s) => s.trim())
+                          .filter((s) => s)
+                      )
                     }
                   />
                 </label>
               </div>
-              <label className="form-control w-full max-w-xs my-2">
+              <label className="form-control w-full max-w-xs my-2 relative">
                 <div className="label">
                   <span className="label-text">About:</span>
                 </div>
-                <textarea
-                  className="textarea w-176"
-                  value={about}
-                  onChange={(e) => setAbout(e.target.value)}
-                ></textarea>
+                <div className="relative">
+                  <textarea
+                    className="textarea w-176"
+                    value={about}
+                    onChange={handleAboutChange}
+                    maxLength={MAX_ABOUT_LENGTH}
+                  ></textarea>
+                  <div className="absolute bottom-2 w-full ml-160 text-sm text-gray-500">
+                    {about.length}/{MAX_ABOUT_LENGTH}
+                  </div>
+                </div>
               </label>
 
               <p className="text-red-500">{error}</p>

@@ -40,7 +40,7 @@ const Feed = () => {
 
   // Feed loaded
   return (
-    <div className="flex justify-center my-10 mt-2">
+    <div className="flex justify-center my-10 mt-10">
       <UserCard user={feed[0]} />
     </div>
   );

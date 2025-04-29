@@ -38,7 +38,7 @@ const UserCard = ({ user, showButtons = true }) => {
       transition={{ duration: 0.5 }}
     >
       <motion.div
-        className="card bg-base-300 w-96 shadow-sm mt-5"
+        className="card bg-base-300 w-96 shadow-sm"
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}
       >
