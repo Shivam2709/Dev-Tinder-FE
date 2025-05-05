@@ -29,7 +29,7 @@ const Navbar = () => {
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl">
           <span className="w-8 h-7">
-            <img className="rounded-b-md" src="/public/logo.png" alt="Logo" />
+            <img className="rounded-b-md" src="/logo.png" alt="Logo" />
           </span>
           DevTinder
         </Link>
