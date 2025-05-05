@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { BASE_URL } from "../utils/Constant";
 import { removeUserFromFeed } from "../utils/feedSlice";
 import toast from "react-hot-toast";
+import { motion } from "framer-motion";
 
 const UserCard = ({ user, showButtons = true }) => {
   const { _id, firstName, lastName, profilePic, age, gender, about, skills } =
