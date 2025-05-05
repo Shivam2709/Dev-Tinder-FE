@@ -62,7 +62,7 @@ const Login = () => {
     <div className="flex justify-center my-20 mb-16 sm:mb-0">
       <div className="flex bg-base-300 text-neutral-content rounded-lg">
         <div className="w-[350px] h-[350px]">
-          <img src="/public/login.png" alt="Login" />
+          <img src="/src/assits/login.png" alt="Login" />
         </div>
         <div className="card-body">
           <div className="flex justify-between items-center mb-4">

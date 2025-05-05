@@ -3,7 +3,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { BASE_URL } from "../utils/Constant";
 import { removeUserFromFeed } from "../utils/feedSlice";
-import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
 const UserCard = ({ user, showButtons = true }) => {
@@ -23,8 +22,8 @@ const UserCard = ({ user, showButtons = true }) => {
       } else {
         toast.success("User ignored");
       }
-    } catch (error) {
-      toast.error("Failed to process request");
+    } catch (err) {
+      toast.error("Failed to process request", err.message);
     }
   };
 
