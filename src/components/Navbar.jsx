@@ -31,7 +31,7 @@ const Navbar = () => {
           <span className="w-8 h-7">
             <img
               className="rounded-b-md"
-              src="/src/assits/logo.png"
+              src="/src/assets/logo.png"
               alt="Logo"
             />
           </span>
