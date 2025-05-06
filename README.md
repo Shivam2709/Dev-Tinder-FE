@@ -70,3 +70,24 @@
     - Write code for SESClient
     - Write code for Sending email address
     - Make the email dynamic by passing more params to the run function
+    
+# Update nginx config file for single page routing(SPA)
+    - this remain same  
+    location /api/ {
+        proxy_pass http://localhost:5000/;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+    - change in here 
+    # React frontend (SPA routing fix)
+    location / {
+        try_files $uri /index.html;
+    }
+    - try_files $uri /index.html;
+    - Save the changes.
+    - Test the Nginx config:
+        - sudo nginx -t
+        - sudo systemctl reload nginx
