@@ -32,12 +32,11 @@ const Body = () => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen overflow-y-scroll scrollbar-hidden">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="m-10">
+      <main className="flex-grow pt-10 px-4">
         <Outlet />
       </main>
-
       <Footer />
     </div>
   );

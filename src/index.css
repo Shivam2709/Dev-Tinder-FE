@@ -3,11 +3,15 @@
   themes: dark --default, light --cupcake;
 }
 
-/* Hide scrollbar for all elements with this class */
+/* global.css or tailwind.css */
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
 .scrollbar-hidden {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;     /* Firefox */
+}
+
+main {
+  padding-bottom: 6rem; /* adjust based on footer height */
 }

@@ -78,7 +78,7 @@ const ConnectionRequest = () => {
       >
         Connection Requests
       </motion.h1>
-      <div className="flex flex-wrap justify-center gap-6 mt-5">
+      <div className=" justify-center grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-30 mt-10 mb-20">
         {requests.map((request, index) => {
           const { _id, firstName, lastName, profilePic, about } =
             request.fromUserId;

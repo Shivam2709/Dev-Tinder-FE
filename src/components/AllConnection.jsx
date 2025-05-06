@@ -36,7 +36,7 @@ const AllConnection = () => {
   return (
     <div className="text-center my-10">
       <h1 className="text-bold text-white text-3xl">Connections</h1>
-      <div className="flex flex-wrap justify-center gap-6 mt-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-y-20 mt-10">
         {connections.map((connection) => {
           const { _id, firstName, lastName, profilePic, about } = connection;
 

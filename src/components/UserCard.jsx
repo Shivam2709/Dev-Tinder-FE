@@ -46,6 +46,7 @@ const UserCard = ({ user, showButtons = true }) => {
           <motion.img
             src={user.profilePic}
             alt="photo"
+            className="w-120 h-90 object-cover rounded-md"
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.3 }}
           />
